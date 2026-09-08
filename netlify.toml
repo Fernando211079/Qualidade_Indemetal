@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Firebase Web API keys são públicas por design (identificam o projeto, não são segredo).
+# O Vite embute variáveis VITE_* no bundle — ignorar dist/ e node_modules/ no scanner.
+[build.environment]
+  SECRETS_SCAN_OMIT_PATHS = "dist/assets,node_modules"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
